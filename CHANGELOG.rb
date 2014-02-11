@@ -2,6 +2,10 @@
 
 This is the Changelog for Capistrano::Jetty.
 
+## v0.0.4 (2014-02-11)
+
+* Move task hooks into global namespace so tasks actually hook in & are run
+
 ## v0.0.3 (2014-02-11)
 
 * Add missing, empty Ruby file to load Gem properly
