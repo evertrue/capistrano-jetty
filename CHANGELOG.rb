@@ -2,6 +2,11 @@
 
 This is the Changelog for Capistrano::Jetty.
 
+## v0.0.5 (2014-02-11)
+
+* Revert previous change, as they should work inside `:deploy` namespace
+* Make task hooks explicit
+
 ## v0.0.4 (2014-02-11)
 
 * Move task hooks into global namespace so tasks actually hook in & are run
