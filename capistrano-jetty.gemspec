@@ -5,7 +5,7 @@ require 'capistrano/jetty/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'capistrano-jetty'
-  spec.version       = Capistrano::Jetty::VERSION
+  spec.version       = '0.0.1'
   spec.authors       = ['Jeff Byrnes']
   spec.email         = ['jeff@evertrue.com']
   spec.summary       = %q{TODO: Write a short summary. Required.}
