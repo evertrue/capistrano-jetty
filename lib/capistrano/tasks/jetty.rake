@@ -14,6 +14,6 @@ namespace :deploy do
     end
   end
 
-  before :published, :update_webapps
-  after :published, :restart
+  before 'deploy:published', 'deploy:update_webapps'
+  after 'deploy:published', 'deploy:restart'
 end
