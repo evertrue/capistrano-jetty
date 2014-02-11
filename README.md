@@ -1,6 +1,6 @@
 # Capistrano::Jetty
 
-This gem provides support in Capistrano 3.x for copying a deployed artifact into Jetty’s webapps directory, then restart Jetty.
+This gem provides support in Capistrano 3.x for copying a deployed artifact into Jetty’s webapps directory, then restarting Jetty.
 
 Plays nicely with [evertrue/capistrano-scm-jenkins](https://github.com/evertrue/capistrano-scm-jenkins).
 
