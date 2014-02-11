@@ -8,9 +8,11 @@ Gem::Specification.new do |spec|
   spec.version       = '0.0.1'
   spec.authors       = ['Jeff Byrnes']
   spec.email         = ['jeff@evertrue.com']
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ''
+  spec.summary       = %q{Capistrano 3 plugin for handling Jetty.}
+  spec.description   = %q{
+Capistrano 3 plugin that handles updating a deployed artifact & Jetty.
+  }
+  spec.homepage      = "https://github.com/evertrue/#{spec.name}"
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
