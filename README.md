@@ -20,7 +20,24 @@ $ bundle
 
 ## Usage
 
-TODO: Write usage instructions here
+This Gem requires that your deploy user have *passwordless sudo rights* to run
+`service jetty restart`. See [Capistrano’s Authorisation docs](http://capistranorb.com/documentation/getting-started/authentication-and-authorisation/#toc_8)
+for a simple example.
+
+In `Capfile`:
+```ruby
+require 'capistrano-jetty'
+```
+
+In your `config/deploy.rb`:
+
+```ruby
+# Filename to grab from your current_path & copy to
+set :deployed_artifact_filename, "#{fetch(:application)}.war"
+
+# Path to your Jetty webapps directory
+set :jetty_webapps_path, '/usr/share/jetty/webapps'
+```
 
 ## Contributing
 
