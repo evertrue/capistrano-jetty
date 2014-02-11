@@ -13,7 +13,7 @@ namespace :deploy do
       execute :sudo, :service, 'jetty', 'restart'
     end
   end
-
-  before :published, :update_webapps
-  after :published, :restart
 end
+
+before :published, :update_webapps
+after :published, :restart
