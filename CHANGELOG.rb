@@ -2,6 +2,10 @@
 
 This is the Changelog for Capistrano::Jetty.
 
+## v0.0.6 (2014-02-12)
+
+* Use correct filepaths for better namespacing
+
 ## v0.0.5 (2014-02-11)
 
 * Revert previous change, as they should work inside `:deploy` namespace
