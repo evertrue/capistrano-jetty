@@ -26,7 +26,7 @@ for a simple example.
 
 In `Capfile`:
 ```ruby
-require 'capistrano-jetty'
+require 'capistrano-jetty/jetty'
 ```
 
 In your `config/deploy.rb`:
