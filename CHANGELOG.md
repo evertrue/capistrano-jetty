@@ -2,6 +2,10 @@
 
 This is the Changelog for Capistrano::Jetty.
 
+## v1.0.0 (2014-02-12)
+
+* Initial production release, idential to 0.0.6
+
 ## v0.0.6 (2014-02-12)
 
 * Use correct filepaths for better namespacing
