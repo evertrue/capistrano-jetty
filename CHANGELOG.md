@@ -2,6 +2,10 @@
 
 This is the Changelog for Capistrano::Jetty.
 
+## v1.1.0 (2014-02-13)
+
+* Add validation to check for necessary Capistrano variables
+
 ## v1.0.0 (2014-02-12)
 
 * Initial production release, idential to 0.0.6
