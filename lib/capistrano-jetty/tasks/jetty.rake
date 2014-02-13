@@ -1,5 +1,5 @@
 namespace :deploy do
-  desc 'Grab the latest artifact from '
+  desc 'Grab the latest artifact from the release_path'
   task :update_webapps do
     on roles(:app) do
       execute :cp, "#{release_path}/#{fetch(:deployed_artifact_filename)}",
