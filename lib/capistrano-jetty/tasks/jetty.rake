@@ -19,8 +19,11 @@ namespace :deploy do
   desc 'Grab the latest artifact from the release_path'
   task :update_webapps do
     on roles(:app) do
-      execute :cp, "#{release_path}/#{fetch(:deployed_artifact_filename)}",
+      execute(
+        :cp,
+        "#{release_path}/#{fetch(:deployed_artifact_filename)}",
         "#{fetch(:jetty_webapps_path)}/#{fetch(:deployed_artifact_filename)}"
+      )
     end
   end
 
