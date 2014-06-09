@@ -2,6 +2,10 @@
 
 This is the Changelog for Capistrano::Jetty.
 
+## v1.2.0 (2014-06-09)
+
+* Refactor deployment to be zero-downtime courtesy of evertrue/et_haproxy-cookbook@v3.1.0
+
 ## v1.1.0 (2014-02-13)
 
 * Add validation to check for necessary Capistrano variables
