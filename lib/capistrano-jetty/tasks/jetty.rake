@@ -3,8 +3,13 @@ namespace :deploy do
     on release_roles :all do
       deployed_artifact_filename = fetch(:deployed_artifact_filename)
       jetty_webapps_path         = fetch(:jetty_webapps_path)
+      load_balancer_backend      = fetch(:load_balancer_backend)
 
-      %w(deployed_artifact_filename jetty_webapps_path).each do | var_name |
+      %w(
+        deployed_artifact_filename
+        jetty_webapps_path
+        load_balancer_backend
+      ).each do | var_name |
         var = eval(var_name)
 
         if var.nil?
@@ -16,25 +21,44 @@ namespace :deploy do
     end
   end
 
-  desc 'Grab the latest artifact from the release_path'
-  task :update_webapps do
-    on roles(:app) do
+  desc 'Rotate servers out of HAProxy pool, stop Jetty, deploy artifact, ' \
+       'restart Jetty, rotate server back into HAProxy pool'
+  task :rolling_restart do
+    on roles(:app), in: :sequence, wait: 5 do |server|
+      current_app_server = server.hostname
+
+      on roles(:load_balancer) do
+        execute(
+          :sudo,
+          '/usr/local/bin/haproxyctl',
+          'disable server',
+          "#{fetch(:load_balancer_backend)}/#{current_app_server}"
+        )
+      end
+
+      sleep 3
+
+      execute :sudo, :service, 'jetty', 'stop'
+
       execute(
         :cp,
         "#{release_path}/#{fetch(:deployed_artifact_filename)}",
         "#{fetch(:jetty_webapps_path)}/#{fetch(:deployed_artifact_filename)}"
       )
-    end
-  end
 
-  desc 'Restart Jetty'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      execute :sudo, :service, 'jetty', 'restart'
+      execute :sudo, :service, 'jetty', 'start'
+
+      on roles(:load_balancer) do
+        execute(
+          :sudo,
+          '/usr/local/bin/haproxyctl',
+          'enable server',
+          "#{fetch(:load_balancer_backend)}/#{current_app_server}"
+        )
+      end
     end
   end
 
   before 'deploy:check', 'deploy:validate'
-  before 'deploy:published', 'deploy:update_webapps'
-  after 'deploy:published', 'deploy:restart'
+  after 'deploy:publishing', 'deploy:rolling_restart'
 end
