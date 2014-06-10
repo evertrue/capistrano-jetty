@@ -39,6 +39,16 @@ set :deployed_artifact_filename, "#{fetch(:application)}.war"
 set :jetty_webapps_path, '/usr/share/jetty/webapps'
 ```
 
+In your `config/deploy/(staging|production).rb`, specify the hostname of the HAProxy server(s) and the name of the HAProxy backend for your servers:
+
+```ruby
+server 'prod-api-haproxy-1d', user: fetch(:user), roles: %w{load_balancer}, no_release: true
+
+set :load_balancer_backend, 'contactsapi-prod'
+```
+
+See the [Chef stage environment](https://github.com/evertrue/server-chef/blob/master/environments/stage.json#L141) and [Chef prod environment](https://github.com/evertrue/server-chef/blob/master/environments/prod.json#L232) to find your app’s HAProxy backend. Line numbers may change; search for `backends` in case these links out-of-date.
+
 ## Contributing
 
 1. Fork it ( http://github.com/evertrue/capistrano-jetty/fork )
