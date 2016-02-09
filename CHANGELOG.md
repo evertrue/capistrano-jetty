@@ -2,6 +2,10 @@
 
 This is the Changelog for Capistrano::Jetty.
 
+## v1.2.1 (2016-02-09)
+
+* Fix error message for missing variable during validation
+
 ## v1.2.0 (2014-06-09)
 
 * Refactor deployment to be zero-downtime courtesy of evertrue/et_haproxy-cookbook@v3.1.0
