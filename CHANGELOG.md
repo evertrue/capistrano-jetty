@@ -2,6 +2,10 @@
 
 This is the Changelog for Capistrano::Jetty.
 
+## v2.0.0 (2016-02-09)
+
+* Remove HAProxy support
+
 ## v1.2.1 (2016-02-09)
 
 * Fix error message for missing variable during validation
