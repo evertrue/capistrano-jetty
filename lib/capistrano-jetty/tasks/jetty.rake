@@ -13,7 +13,7 @@ namespace :deploy do
         var = eval(var_name)
 
         if var.nil?
-          error "capistrano-scm-jenkins: #{var_name} is not set"
+          error "capistrano-jetty: #{var_name} is not set"
 
           exit 1
         end
